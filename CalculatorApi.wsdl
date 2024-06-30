@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://tempuri.org/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             targetNamespace="http://tempuri.org/"
+             name="CalculatorService">
+  <types>
+    <xsd:schema targetNamespace="http://tempuri.org/">
+      <xsd:element name="Sumar">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="Num1" type="xsd:int"/>
+            <xsd:element name="Num2" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SumarResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="SumaResultado" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Restar">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="Num1" type="xsd:int"/>
+            <xsd:element name="Num2" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RestarResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="RestaResultado" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Multiplicar">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="Num1" type="xsd:int"/>
+            <xsd:element name="Num2" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MultiplicarResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="MultiplicarResultado" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Dividir">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="Num1" type="xsd:int"/>
+            <xsd:element name="Num2" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DividirResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="DividirResultado" type="xsd:int"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="SumarRequest">
+    <part name="parameters" element="tns:Sumar"/>
+  </message>
+  <message name="SumarResponse">
+    <part name="parameters" element="tns:SumarResponse"/>
+  </message>
+  <message name="RestarRequest">
+    <part name="parameters" element="tns:Restar"/>
+  </message>
+  <message name="RestarResponse">
+    <part name="parameters" element="tns:RestarResponse"/>
+  </message>
+  <message name="MultiplicarRequest">
+    <part name="parameters" element="tns:Multiplicar"/>
+  </message>
+  <message name="MultiplicarResponse">
+    <part name="parameters" element="tns:MultiplicarResponse"/>
+  </message>
+  <message name="DividirRequest">
+    <part name="parameters" element="tns:Dividir"/>
+  </message>
+  <message name="DividirResponse">
+    <part name="parameters" element="tns:DividirResponse"/>
+  </message>
+  <portType name="CalculatorServiceSoap">
+    <operation name="Sumar">
+      <input message="tns:SumarRequest"/>
+      <output message="tns:SumarResponse"/>
+    </operation>
+    <operation name="Restar">
+      <input message="tns:RestarRequest"/>
+      <output message="tns:RestarResponse"/>
+    </operation>
+    <operation name="Multiplicar">
+      <input message="tns:MultiplicarRequest"/>
+      <output message="tns:MultiplicarResponse"/>
+    </operation>
+    <operation name="Dividir">
+      <input message="tns:DividirRequest"/>
+      <output message="tns:DividirResponse"/>
+    </operation>
+  </portType>
+  <binding name="CalculatorServiceSoapBinding" type="tns:CalculatorServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="Sumar">
+      <soap:operation soapAction="http://tempuri.org/Sumar" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Restar">
+      <soap:operation soapAction="http://tempuri.org/Restar" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Multiplicar">
+      <soap:operation soapAction="http://tempuri.org/Multiplicar" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Dividir">
+      <soap:operation soapAction="http://tempuri.org/Dividir" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="CalculatorService">
+  <port name="CalculatorServiceSoap" binding="tns:CalculatorServiceSoapBinding">
+    <soap:address location="http://localhost:3000/service"/>
+  </port>
+</service>
+</definitions>
